@@ -5,5 +5,6 @@
 4. **essential modes** by diagonalizing covariance matrix -- covariance.py
 5. **mutual information matrix** from determinant of covariance matrix -- covariance.py
 6. **generalized correlation coefficient matrix** from mutual information matrix -- generalized_correlation.py
-7. **adjacency matrix** from generalized correlation coefficient matrix and distance matrix
-8. **eigenvector centrality matrix** from adjacency matrix
+7. **adjacency matrix** from generalized correlation coefficient matrix and distance matrix --eigenvector_centrality.py
+8. **eigenvector centrality matrix** from adjacency matrix --eigenvector_centrality.py
+9. Girvan Newman algorithm for **community detection** -- comm_net_analysis.py
