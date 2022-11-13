@@ -7,4 +7,3 @@
 6. **generalized correlation coefficient matrix** from mutual information matrix -- generalized_correlation.py
 7. **adjacency matrix** from generalized correlation coefficient matrix and distance matrix --eigenvector_centrality.py
 8. **eigenvector centrality matrix** from adjacency matrix --eigenvector_centrality.py
-9. Girvan Newman algorithm for **community detection** -- comm_net_analysis.py
