@@ -146,3 +146,42 @@ def dump_essentials(eigenvalues, eigenvectors, matrix_name, path):
 
 # compute eigenvalues and eigenvectors of covariance matrix
 eigvals, eigvec = diagonalize_square_matrix(covariance_matrix, 'fileame', output_path)
+
+# define function to compute mutual information from covariance matrix
+def compute_mutual_information(covar_matrix, natoms):
+    twobody_corr_matrix = np.zeros((natoms, natoms), dtype='float')
+    for i in range(0, natoms):
+        temp = determinant(covar_matrix, i, i, 3)
+        for j in range(0, i):
+            temp1 = determinant(covar_matrix, j, j, 3)
+            temp2 = determinant(covar_matrix, i, j, 6)  
+            temp3 = temp * temp1 / temp2
+            temp3 = np.emath.log(temp3.real)
+
+            twobody_corr_matrix[i][j] = temp3
+            twobody_corr_matrix[j][i] = twobody_corr_matrix[i][j]
+    twobody_corr_matrix = 0.5 * twobody_corr_matrix
+    return twobody_corr_matrix
+
+# define function to compute the determinant of a matrix
+def determinant(matrix, ii, jj, n):
+    det = None
+    if n == 6:
+        tempmatrix = np.zeros((6, 6))
+        for i in range(1, 4):
+            for j in range(1, 4):
+                tempmatrix[i - 1][j - 1] = matrix[ii * 3 + i - 1, ii * 3 + j - 1]
+                tempmatrix[i - 1][j + 3 - 1] = matrix[ii * 3 + i - 1, jj * 3 + j - 1]
+                tempmatrix[i + 3 - 1][j - 1] = matrix[jj * 3 + i - 1, ii * 3 + j - 1]
+                tempmatrix[i + 3 - 1][j + 3 - 1] = matrix[jj * 3 + i - 1, jj * 3 + j - 1]
+        det = LA.det(tempmatrix)
+    if n == 3:
+        tempmatrix = np.zeros((3, 3))
+        for i in range(1, 4):
+            for j in range(1, 4):
+                tempmatrix[i - 1][j - 1] = matrix[ii * 3 + i - 1][jj * 3 + j - 1]
+        det = LA.det(tempmatrix)
+    return det
+
+# compute mutual information from covariance matrix
+linearized_mutual_information = compute_mutual_information(covariance_matrix, number_of_atoms)
