@@ -1,3 +1,4 @@
+# Procedure
 1. **displacement matrix** from universe
 2. **distance matrix** from universe
 3. **covariance matrix** from displacement matrix
