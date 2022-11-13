@@ -66,11 +66,11 @@ $$d_{ij} =\sum\limits_{j=1}^{n} e_{ij} ~ where: ~ i \neq j$$
 
 **Eigenvector centrality** is the weighted sum of the centralities of all nodes that are connected to it by an edge, as defined in the **adjacency matrix** $A_{i, j}$. The eigenvector centrality can be calculated according to the following equation:
     
-$$ c_{i} = \varepsilon^{-1} \sum_{j=1}^{n} \mathbf{A}_{ij} c_{j}, \ \ \ \ \ \textrm{where } \mathbf{c} \textrm{ is the eigenvector associated with the largest eigenvalue } \varepsilon \textrm{ of } \mathbf{A} $$ 
+$$ c_{i} = \varepsilon^{-1} \sum_{j=1}^{n} \mathbf{A_{ij} c_{j}}, \ \ \ \ \ \textrm{where } \mathbf{c} \textrm{ is the eigenvector associated with the largest eigenvalue } \varepsilon \textrm{ of } \mathbf{A} $$ 
 
 For this calculation, the adjacency matrix is defined as follows: 
     
-$$ \mathbf{A}_{ij} = \begin{cases} \\ 0 & \ \ \ \ \ \textrm{ if } i=j \\ \mathbf{r}_{{MI}} \left[x_{i}, x_{j}\right] \exp \bigg( - \frac{d_{ij}}{\lambda}\bigg) & \ \ \ \ \ \textrm{ if } i \neq j \\ \end{cases} $$ 
+$$ \mathbf{A}_{ij} = \begin{cases} \\ 0 & \ \ \ \ \ \textrm{ if } i=j \\\\\\mathbf{r}_{(MI)} \left[x_{i}, x_{j}\right] \exp \bigg( - \frac{d_{ij}}{\lambda}\bigg) & \ \ \ \ \ \textrm{ if } i \neq j \\ \end{cases} $$ 
         
 where $\lambda$ has been introduced as a length/locality factor to augment the locality of the iterations considered in the exponential damping parameter and $d_{ij}$ is the matrix of average distance of $\alpha$-Carbons $i$ and $j$.
 
